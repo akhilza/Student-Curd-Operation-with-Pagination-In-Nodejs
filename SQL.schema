@@ -1,0 +1,24 @@
+-- Create the 'students' table
+
+
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,       
+    first_name VARCHAR(50) NOT NULL,   
+    last_name VARCHAR(50) NOT NULL,   
+    date_of_birth DATE NOT NULL,     
+    email VARCHAR(100) UNIQUE NOT NULL,  
+    enrollment_date DATE NOT NULL       
+);
+
+
+-- Create the 'marks' table
+
+
+CREATE TABLE marks (
+    mark_id SERIAL PRIMARY KEY,          
+    student_id INT NOT NULL,            
+    subject VARCHAR(100) NOT NULL,      
+    score DECIMAL(5, 2) NOT NULL,       
+    semester INT NOT NULL,         
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE  
+);
